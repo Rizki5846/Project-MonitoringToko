@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LaporanKeluarExport;
+
 use App\Models\BarangKeluar;
 use App\Models\LaporanKeluar;
 
@@ -30,5 +31,8 @@ class LaporanKeluarController extends Controller
         $pdf = PDF::loadview('Laporankeluar.print', ['barang_keluar' => $barangkeluar]);
         return $pdf->download('data_barangkeluar.pdf');
     }
-
+    public function export()
+    {
+        return Excel::download(new LaporanKeluarExport, 'laporankeluar.xlsx');
+    }
 }
