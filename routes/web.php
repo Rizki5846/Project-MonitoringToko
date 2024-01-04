@@ -42,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/barang/{id}/edit',[BarangController::class, 'edit'])->name('barang.edit');
     Route::match(['put', 'patch'], '/barang/{id}',[BarangController::class, 'update'])->name('barang.update');
 });
-//barang
+//barang masuk
 Route::middleware('auth')->group(function () {
 
     Route::get('/BarangMasuk', [BarangMasukController::class, 'index'])->name('BarangMasuk');
@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/BarangMasuk/{id}', [BarangMasukController::class, 'destroy'])->name('BarangMasuk.destroy');
     Route::get('/BarangMasuk/{id}/edit',[BarangMasukController::class, 'edit'])->name('BarangMasuk.edit');
     Route::match(['put', 'patch'], '/BarangMasuk/{id}',[BarangMasukController::class, 'update'])->name('BarangMasuk.update');
+    Route::get('/get-nama-barang', [BarangMasukController::class, 'getNamaBarangByKodeBarang']);
 });
 
 require __DIR__.'/auth.php';

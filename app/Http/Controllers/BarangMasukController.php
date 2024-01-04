@@ -68,6 +68,14 @@ public function update(Request $request, $id)
     }
 
 
+    public function getNamaBarangByKodeBarang(Request $request)
+    {
+        $kodeBarang = $request->kode_barang;
+        $namaBarang = Barang::where('kode_barang', $kodeBarang)->value('nama_barang');
+
+        return response()->json(['nama_barang' => $namaBarang]);
+    }
+
     public function destroy($id)
     {
         $barangmasuk = BarangMasuk::findOrFail($id);
