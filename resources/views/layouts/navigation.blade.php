@@ -23,6 +23,11 @@
                     </x-nav-link>
                 </div>
                 @endhasrole
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('barang')" :active="request()->routeIs('barang')">
+                        {{ __('Barang') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
