@@ -48,6 +48,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/BarangMasuk', [BarangMasukController::class, 'index'])->name('BarangMasuk');
     Route::get('/BarangMasuk/create', [BarangMasukController::class, 'create'])->name('BarangMasuk.create');
     Route::post('/BarangMasuk', [BarangMasukController::class, 'store'])->name('BarangMasuk.store');
+    Route::delete('/BarangMasuk/{id}', [BarangMasukController::class, 'destroy'])->name('BarangMasuk.destroy');
+    Route::get('/BarangMasuk/{id}/edit',[BarangMasukController::class, 'edit'])->name('BarangMasuk.edit');
+    Route::match(['put', 'patch'], '/BarangMasuk/{id}',[BarangMasukController::class, 'update'])->name('BarangMasuk.update');
 });
 
 require __DIR__.'/auth.php';

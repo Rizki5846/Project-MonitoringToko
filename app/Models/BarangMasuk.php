@@ -21,6 +21,7 @@ class BarangMasuk extends Model
     {
         return $this->belongsTo(Barang::class, 'kode_barang', 'kode_barang');
     }
+    
     protected static function boot()
     {
         parent::boot();
