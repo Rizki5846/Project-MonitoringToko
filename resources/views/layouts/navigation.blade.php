@@ -28,6 +28,11 @@
                         {{ __('Barang') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('BarangMasuk')" :active="request()->routeIs('BarangMasuk.create')">
+                        {{ __('Barang Masuk') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
