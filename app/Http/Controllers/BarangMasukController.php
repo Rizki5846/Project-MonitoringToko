@@ -43,41 +43,63 @@ class BarangMasukController extends Controller
         // Redirect atau berikan respons berhasil jika penyimpanan berhasil
         return redirect()->route('BarangMasuk')->with('success', 'Data barang masuk berhasil ditambahkan');
     }
+    // public function edit($id)
+    // {
+    //     $data ['barangs'] = Barang::find($id);
+    //     return view('BarangMasuk.edit' , $data);
+    // }
+
+    // public function update(Request $request, $id)
+    // {
+    //     // Validasi input sebelum disimpan
+
+    //     $validatedData = $request->validate([
+      
+    //     ]);
+
+        // Membuat instance BarangMasuk
+ 
+    
+    //     return redirect()->route('BarangMasuk,update')->with('success', 'Data barang masuk berhasil ditambahkan');
+    // }
+
     public function edit($id)
     {
-        // Temukan data BarangMasuk berdasarkan ID yang diberikan
-        $barangMasuk = BarangMasuk::findOrFail($id);
-    
-        // Jika ditemukan, kirim data ke view untuk proses penyuntingan
-        return view('BarangMasuk.edit', compact('barangMasuk'));
+        $barangMasuk = BarangMasuk::find($id);
+        $barangs = Barang::all();
+
+        return view('BarangMasuk.edit', compact('barangMasuk', 'barangs'));
     }
-    
-    public function update(Request $request, $id)
+
+
+public function update(Request $request, $id)
     {
-        // Validasi input sebelum disimpan
         $validatedData = $request->validate([
             'kode_barang' => 'required',
             'jumlah_masuk' => 'required|integer',
             'tgl_masuk' => 'required|date', // Tambahkan aturan validasi untuk tanggal
             // Tambahkan aturan validasi lain jika diperlukan
         ]);
-    
-        // Temukan data BarangMasuk berdasarkan ID yang diberikan
-        $barangMasuk = BarangMasuk::findOrFail($id);
-    
-        // Perbarui data barang masuk dengan data dari request
+
+        $barangMasuk = BarangMasuk::find($id);
         $barangMasuk->kode_barang = $request->kode_barang;
         $barangMasuk->jumlah_masuk = $request->jumlah_masuk;
         $barangMasuk->tgl_masuk = $request->tgl_masuk;
-        // Perbarui atribut lain jika ada
-    
-        // Simpan perubahan data barang masuk ke dalam database
+        // Update atribut lain jika diperlukan
+
         $barangMasuk->save();
-    
-        // Redirect atau berikan respons berhasil jika penyimpanan berhasil
-        return redirect()->route('BarangMasuk')->with('success', 'Data barang masuk berhasil diperbarui');
+
+        return redirect()->route('BarangMasuk')->with('success', 'Data barang keluar berhasil diperbarui');
     }
-    
+
+
+    public function getNamaBarangByKodeBarang(Request $request)
+    {
+        $kodeBarang = $request->kode_barang;
+        $namaBarang = Barang::where('kode_barang', $kodeBarang)->value('nama_barang');
+
+        return response()->json(['nama_barang' => $namaBarang]);
+    }
 
     public function destroy($id)
     {
@@ -91,5 +113,4 @@ class BarangMasukController extends Controller
 
         return redirect()->route('BarangMasuk')->with($notification);
     }
-
 }
