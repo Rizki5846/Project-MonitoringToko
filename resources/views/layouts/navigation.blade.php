@@ -38,6 +38,11 @@
                         {{ __('Barang Keluar') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('LaporanKeluar')" :active="request()->routeIs('LaporanKeluar')">
+                        {{ __('Laporan Barang Keluar') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
