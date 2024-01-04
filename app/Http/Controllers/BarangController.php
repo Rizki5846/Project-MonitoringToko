@@ -49,4 +49,17 @@ class BarangController extends Controller
         return redirect()->route('barang.create')->with($notification);
         }
     }
+
+    public function destroy($id)
+    {
+        $barang = Barang::findOrFail($id);
+        $barang->delete();
+
+        $notification = array(
+            'message' => 'Data barang berhasil dihapus',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('barang')->with($notification);
+    }
 }
