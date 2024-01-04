@@ -4,6 +4,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
 use App\Http\Controllers\LaporanKeluarController;
+use App\Http\Controllers\LaporanMasukController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/LaporanKeluar', [LaporanKeluarController::class, 'index'])->name('LaporanKeluar');
     Route::get('/LaporanKeluar/print', [LaporanKeluarController::class, 'print'])->name('barangkeluar.print');
     Route::get('/LaporanKeluar/export', [LaporanKeluarController::class, 'export'])->name('barangkeluar.export'); 
+});
+//laporan masuk
+Route::middleware('auth')->group(function () {
+    Route::get('/LaporanMasuk', [LaporanMasukController::class, 'index'])->name('LaporanMasuk');
+    Route::get('/Laporanmasuk/print', [LaporanMasukController::class, 'print'])->name('barangmasuk.print');
+    Route::get('/Laporanmasuk/export', [LaporanMasukController::class, 'export'])->name('barangmasuk.export'); 
 });
 
 require __DIR__.'/auth.php';
