@@ -38,7 +38,8 @@
                             </td>
                             <td></td>
                             <td>
-
+                                <x-primary-button tag="a" href="{{route('barang.edit', $barang['id'])}}">Edit</x-primary-button>
+                                
                                 <x-danger-button x-data=""
                                     x-on:click.prevent="$dispatch('open-modal', 'confirm-book-deletion')"
                                     x-on:click="$dispatch('set-action', '{{ route('barang.destroy', $barang['id']) }}')">
