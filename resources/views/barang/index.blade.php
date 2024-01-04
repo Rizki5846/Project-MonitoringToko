@@ -26,7 +26,7 @@
                             </tr>
                         </x-slot>
                         @php $num = 1; @endphp
-                        @foreach($barangs as $barang)
+                        @foreach($data as $barang)
                         <tr>
                             <td>{{ $num++ }}</td>
                             <td>{{ $barang['kode_barang'] }}</td>
@@ -36,15 +36,15 @@
                             <td>
                                 <img src="{{ asset('storage/cover_barang/'.$barang['cover']) }}" width="100px" />
                             </td>
-                            <td></td>
+                            <td>{{ $barang['total_stok'] }}</td>
                             <td>
+
                                 <x-primary-button tag="a" href="{{route('barang.edit', $barang['id'])}}">Edit</x-primary-button>
-                                
+
                                 <x-danger-button x-data=""
                                     x-on:click.prevent="$dispatch('open-modal', 'confirm-book-deletion')"
                                     x-on:click="$dispatch('set-action', '{{ route('barang.destroy', $barang['id']) }}')">
                                     {{ __('Delete') }}
-
                                 </x-danger-button>
                             </td>
                         </tr>
@@ -70,7 +70,6 @@
                             </div>
                         </form>
                     </x-modal>
-        
                 </div>
             </div>
         </div>
