@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
 //barang
 Route::middleware('auth')->group(function () {
     Route::get('/barang', [BarangController::class, 'index'])->name('barang');
+    Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
 });
 
 require __DIR__.'/auth.php';
