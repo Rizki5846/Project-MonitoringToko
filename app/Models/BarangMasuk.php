@@ -1,13 +1,11 @@
 <?php
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class BarangMasuk extends Model
 {
-    use HasFactory;
     protected $table = 'barang_masuk'; // Sesuaikan dengan nama tabel yang ada di basis data
     protected $fillable = [
         'kode_barang',
@@ -21,7 +19,6 @@ class BarangMasuk extends Model
     {
         return $this->belongsTo(Barang::class, 'kode_barang', 'kode_barang');
     }
-    
     protected static function boot()
     {
         parent::boot();
@@ -38,4 +35,5 @@ class BarangMasuk extends Model
             }
         });
     }
+
 }

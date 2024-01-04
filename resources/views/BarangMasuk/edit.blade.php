@@ -20,7 +20,7 @@
                         
                         <div class="max-w-xl">
                             <x-input-label for="nama_barang" value="Nama Barang" />
-                            <x-text-input id="nama_barang" type="text" name="nama_barang" class="mt-1 block w-full" value="{{ $barangMasuk->nama_barang }}" readonly />
+                            <x-text-input id="nama_barang" type="text" name="nama_barang" class="mt-1 block w-full" value="{{ $barangMasuk->barang->nama_barang }}" readonly />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="tgl_masuk" value="Tanggal Masuk" />
