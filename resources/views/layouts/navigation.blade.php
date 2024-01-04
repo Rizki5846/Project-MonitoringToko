@@ -48,6 +48,11 @@
                         {{ __('Laporan Barang Keluar') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('StokBarang')" :active="request()->routeIs('StokBarang')">
+                        {{ __('Laporan Stok Barang') }}
+                    </x-nav-link>
+                </div>
                 
             </div>
 
