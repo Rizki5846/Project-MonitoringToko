@@ -1,14 +1,9 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Laporan Masuk Barang') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+    <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+        <h1 class="text-2xl font-semibold mb-4">Loporan Barang Masuk</h1>
+        
+        <div class="grid grid-cols-12 gap-6">
+        </div>
                     <x-primary-button tag="a" href="{{route('barangmasuk.print')}}">Cetak Laporan Masuk</x-primary-button>
                     <x-primary-button tag="a" href="{{ route('barangmasuk.export')}}">Export Excel</x-primary-button>
                     <br /><br />
@@ -35,10 +30,6 @@
                             <td>{{ $barangmasuk->jumlah_masuk }}</td>
                         </tr>
                         @endforeach
-
                     </x-table>
                 </div>
-            </div>
-        </div>
-    </div>
 </x-app-layout>

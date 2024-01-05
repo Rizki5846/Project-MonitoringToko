@@ -3,11 +3,13 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangKeluarController;
 use App\Http\Controllers\BarangMasukController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DataFeedController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LaporanKeluarController;
 use App\Http\Controllers\LaporanMasukController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StokController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +22,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', 'login');
+
+Route::get('/create-user', [UserController::class, 'createUser']);
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/analytics', [DashboardController::class, 'analytics'])->name('analytics');
+    Route::get('/dashboard/fintech', [DashboardController::class, 'fintech'])->name('fintech');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::view('/roles', 'role')->name('role')->middleware(['role:admin']);
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-//barang
 Route::middleware('auth')->group(function () {
     Route::get('/barang', [BarangController::class, 'index'])->name('barang');
     Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
@@ -86,4 +81,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/StokBarang/export', [StokController::class, 'export'])->name('StokBarang.export');
 });
 
-require __DIR__.'/auth.php';
+
+
+
+

@@ -1,16 +1,9 @@
-
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Barang') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    <x-primary-button tag="a" href="{{ route('barang.create') }}">Add</x-primary-button>
+    <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
+        <h1 class="text-2xl font-semibold mb-4">Halaman Barang</h1>
+        <div class="grid grid-cols-12 gap-6">
+        </div>
+        <x-primary-button tag="a" href="{{ route('barang.create') }}">Add</x-primary-button>
                     <br /><br />
                     <x-table>
                         <x-slot name="header">
@@ -20,7 +13,7 @@
                                 <th>Nama Barang</th>
                                 <th>Jenis</th> 
                                 <th>Harga</th>
-                                <th>Cover</th>
+                                <th>Gambar</th>
                                 <th>Stok</th>
                                 <th>Aksi</th>
                             </tr>
@@ -71,7 +64,4 @@
                         </form>
                     </x-modal>
                 </div>
-            </div>
-        </div>
-    </div>
 </x-app-layout>
