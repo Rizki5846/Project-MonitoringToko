@@ -40,6 +40,19 @@ class JenisBarangController extends Controller
         return redirect()->route('JenisBarang')->with('success', 'Data barang keluar berhasil ditambahkan');
     }
 
+    public function destroy($id)
+    {
+        $JenisBarang = JenisBarang::findOrFail($id);
+        $JenisBarang->delete();
+
+        $notification = array(
+            'message' => 'Jenis Barang berhasil dihapus',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('JenisBarang')->with($notification);
+    }
+
 
    
     
