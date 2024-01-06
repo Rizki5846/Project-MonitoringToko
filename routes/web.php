@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/JenisBarang', [JenisBarangController::class, 'index'])->name('JenisBarang');
     Route::get('/JenisBarang/create', [JenisBarangController::class, 'create'])->name('JenisBarang.create');
     Route::post('/JenisBarang', [JenisBarangController::class, 'store'])->name('JenisBarang.store');
+    Route::delete('/JenisBarang/{id}', [JenisBarangController::class, 'destroy'])->name('JenisBarang.destroy');
 });
 
 Route::middleware('auth')->group(function () {
