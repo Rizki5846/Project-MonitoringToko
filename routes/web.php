@@ -10,6 +10,7 @@ use App\Http\Controllers\LaporanKeluarController;
 use App\Http\Controllers\LaporanMasukController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JenisBarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/BarangMasuk/{id}/edit',[BarangMasukController::class, 'edit'])->name('BarangMasuk.edit');
     Route::match(['put', 'patch'], '/BarangMasuk/{id}',[BarangMasukController::class, 'update'])->name('BarangMasuk.update');
     Route::get('/get-nama-barang', [BarangMasukController::class, 'getNamaBarangByKodeBarang']);
+});
+//Jenis Barang
+Route::middleware('auth')->group(function () {
+    Route::get('/JenisBarang', [JenisBarangController::class, 'index'])->name('JenisBarang');
+    Route::get('/JenisBarang/create', [JenisBarangController::class, 'create'])->name('JenisBarang.create');
+    Route::post('/JenisBarang', [JenisBarangController::class, 'store'])->name('JenisBarang.store');
 });
 
 Route::middleware('auth')->group(function () {

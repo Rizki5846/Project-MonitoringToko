@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class JenisBarang extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama'];
+    protected $table = 'jenis_barangs'; // Sesuaikan dengan nama tabel yang ada di basis data
+    protected $fillable = [
+        'nama',
+
+
+        // Atribut lain yang dapat diisi secara massal (fillable)
+    ];
 }
